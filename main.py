@@ -47,8 +47,13 @@ def add_spotpass_data(filepath):
 
 def main():
   parser = argparse.ArgumentParser(description='Fire Emblem Awakening SpotPass Unlocker')
-  parser.add_argument('save', type=str)
+  parser.add_argument('save', type=str, help='Path to save file')
   args = parser.parse_args()
+
+  working_dir = os.getcwd()
+  executable_dir = os.path.split(sys.executable)[0]
+  if working_dir != executable_dir:
+    os.chdir(executable_dir)
 
   if not os.path.exists(SAVE_TOOL):
     print(f'Please ensure {SAVE_TOOL} is in this directory')
