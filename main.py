@@ -47,7 +47,7 @@ def add_spotpass_data(filepath):
 
 def main():
   parser = argparse.ArgumentParser(description='Fire Emblem Awakening SpotPass Unlocker')
-  parser.add_argument('save', type=str, help='Path to save file')
+  parser.add_argument('saves', metavar='save', type=str, nargs='+', help='Path to save file(s)')
   args = parser.parse_args()
 
   # Check if PyInstaller executable to know where to check for SAVE_TOOL
@@ -61,11 +61,13 @@ def main():
     print(f'Please ensure {SAVE_TOOL} is in this directory')
     sys.exit(1)
 
-  if not os.path.exists(args.save):
-    print(f'Couldn\'t find {args.save}')
-    sys.exit(1)
-  else:
-    add_spotpass_data(args.save)
+  for save in args.saves:
+    if not os.path.exists(save):
+      print(f'Couldn\'t find {save}')
+      sys.exit(1)
+    else:
+      add_spotpass_data(save)
+      print('---')
 
 if __name__ == '__main__':
   main()
