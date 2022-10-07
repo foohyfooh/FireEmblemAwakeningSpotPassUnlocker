@@ -51,7 +51,8 @@ def main():
   args = parser.parse_args()
 
   # Check if PyInstaller executable to know where to check for SAVE_TOOL
-  if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+  is_executable = getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')
+  if is_executable:
     working_dir = os.getcwd()
     executable_dir = os.path.split(sys.executable)[0]
     if working_dir != executable_dir:
@@ -59,11 +60,15 @@ def main():
 
   if not os.path.exists(SAVE_TOOL):
     print(f'Please ensure {SAVE_TOOL} is in this directory')
+    if is_executable:
+      input('Press <Enter> to close')
     sys.exit(1)
 
   for save in args.saves:
     if not os.path.exists(save):
       print(f'Couldn\'t find {save}')
+      if is_executable:
+        input('Press <Enter> to close')
       sys.exit(1)
     else:
       add_spotpass_data(save)
