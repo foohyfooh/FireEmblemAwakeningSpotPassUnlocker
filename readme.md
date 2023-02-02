@@ -5,7 +5,6 @@ Script to automate the process of adding SpotPass data to Fire Emblem Awakening 
 ## Requirements
 - [Python](https://www.python.org/) 3.6 or higher
   - [PyInstaller](https://pyinstaller.org/en/stable/): `pip install pyinstaller`
-<!-- [SciresM](https://github.com/SciresM)'s [FEAST](https://github.com/SciresM/FEAST) -->
 - [RainThunder](https://github.com/RainThunder)'s fork of FEAST: [FEST](https://github.com/RainThunder/FEST)
 
 ## Building
@@ -19,7 +18,7 @@ pyinstaller --onefile --icon=icon.ico --name=FireEmblemAwakeningSpotpassUnlocker
 3. Copy the Awakening save file to this folder i.e. Chapter0, Chapter1, or Chapter2.
 4. Either
     - run the script using the command `python main.py <Chapter file>` e.g. `python main.py Chapter0` for the first save
-    - drag the save file into FireEmblemAwakeningSpotpassUnlocker.exe
+    - drag the save file into *FireEmblemAwakeningSpotpassUnlocker.exe*
 5. Copy modified save file back to the game and test.
 
 
